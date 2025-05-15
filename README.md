@@ -77,27 +77,27 @@ earth ↦ Dashboard loads 6 city cards
 
 **Dashboard**
 
-![Dashboard showing city cards](/images/dashboard.png)
+![Dashboard showing city cards](./images/dashboard.png)
 
 **City Focus**
 
-![City Focus page with hourly modal open](/images/city-focus.png)
+![City Focus page with hourly modal open](./images/city-focus.png)
 
 **Settings**
 
-![Settings page with theme and units toggles](/images/settings.png)
+![Settings page with theme and units toggles](./images/settings.png)
 
 **Dark Mode**
 
-![Dashboard in dark mode theme](/images/dark-mode.png)
+![Dashboard in dark mode theme](./images/dark-mode.png)
 
 **Favourite Cities**
 
-![Favourite cities highlighted on dashboard](/images/favourite-cities.png)
+![Favourite cities highlighted on dashboard](./images/favourite-cities.png)
 
 **Hourly Panel**
 
-![Hourly forecast panel modal](/images/hourly-panel.png)
+![Hourly forecast panel modal](./images/hourly-modal.png)
 
 ## Configuration
 
