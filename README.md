@@ -32,7 +32,7 @@ git add .
 git commit -m "Initial commit"
 git branch -M main
 # set your remote URL (replace with your repo)
-git remote add origin https://github.com/yourusername/Whether-Weather.git
+git remote add origin https://github.com/edabelt/Whether-Weather.git
 git push -u origin main
 ```
 
