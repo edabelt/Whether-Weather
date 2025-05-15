@@ -1,4 +1,4 @@
-#Whethe- Weather
+# Whether-Weather
 
 Whether-Weather is a static site that displays weather information for various cities and detailed hourly forecasts. It uses Eleventy for build, Bulma CSS for styling, and client-side JavaScript to fetch and render weather data.
 
@@ -13,47 +13,55 @@ This project aims to provide users with:
 
 ## Installation Instructions
 
-If you haven’t yet created a GitHub repo, first make one on GitHub (e.g., `weather-dashboard`). Then clone or initialize locally:
+1. **Create a GitHub repository** named `Whether-Weather` (using your account):
 
-**Option A: Clone existing repo**
+   * Go to [GitHub](https://github.com) → **New** → **Repository**.
+   * Name it exactly `Whether-Weather`, add a README if you like, then click **Create repository**.
 
-```bash
-git clone https://github.com/yourusername/Whether-Weather.git
-cd Whether-Weather
-```
+2. **Clone your repo locally**:
 
-**Option B: Initialize a new repo and push**
+   ```bash
+   # Clone into your current directory
+   git clone git@github.com:edabelt/Whether-Weather.git
+   # Change into the project folder (replace path if you cloned elsewhere)
+   cd Whether-Weather
+   ```
 
-```bash
-mkdir Whether-Weather && cd Whether-Weather
-# copy or create your project files here
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-# set your remote URL (replace with your repo)
-git remote add origin https://github.com/edabelt/Whether-Weather.git
-git push -u origin main
-```
+3. **If you’re starting fresh (no remote yet)**:
 
-2. **Install dependencies**:
+   ```bash
+   mkdir Whether-Weather && cd Whether-Weather
+   # copy or create your project files into this folder
+   git init
+   git add .
+   git commit -m "Initial project files"
+   git branch -M main
+   git remote add origin git@github.com:edabelt/Whether-Weather.git
+   git push --set-upstream origin main
+   ```
+
+4. **Install dependencies**:
 
    ```bash
    npm install
    ```
-3. **Build and serve locally**:
+
+5. **Build and serve locally**:
 
    ```bash
    npm run build
    npm run serve
    ```
 
-   Site will be at `http://localhost:8080`
+Site will be available at `http://localhost:8080`
 
 ## Usage
 
 * **Dashboard** (`/`): shows city cards with icon, min/max temps.
 * **City Focus** (`/city/{cityKey}/`): click a city to see daily summary and click “Hourly Forecast” to open modal with 24‑hour details.
+
+  * To preview a specific city locally, open in your browser:
+    `http://localhost:8080/city/waterford/` (replace `waterford` with any city key).
 * **Settings** (`/settings/`): choose theme, units, home and favourites.
 * **News** (`/news/`): browse climate news teasers with images & summaries, click ‘Read More’ to view full articles.
 
@@ -69,59 +77,30 @@ earth ↦ Dashboard loads 6 city cards
 
 **Dashboard**
 
-![Dashboard showing city cards](/images/screenshots/dashboard.png)
+![Dashboard showing city cards](/images/dashboard.png)
 
 **City Focus**
 
-![City Focus page](/images/screenshots/city-focus.png)
-
-**City Focus**
-
-![City Focus page with hourly modal open](/images/screenshots/hourly-modal.png)
-
+![City Focus page with hourly modal open](/images/city-focus.png)
 
 **Settings**
 
-![Settings page with theme and units toggles](/images/screenshots/settings.png)
+![Settings page with theme and units toggles](/images/settings.png)
 
 **Dark Mode**
 
-![Dashboard in dark mode theme](/images/screenshots/dark-mode.png)
+![Dashboard in dark mode theme](/images/dark-mode.png)
 
 **Favourite Cities**
 
-![Favourite cities highlighted on dashboard](/images/screenshots/favourite-cities.png)
+![Favourite cities highlighted on dashboard](/images/favourite-cities.png)
 
-![Dashboard in dark mode theme](/images/screenshots/dark-mode.png)
+**Hourly Panel**
+
+![Hourly forecast panel modal](/images/hourly-panel.png)
 
 ## Configuration
 
 * Data files live in `./data/{cityKey}_daily.json` and `{cityKey}_hourly.json`.
 * CSS in `./css/` (Bulma plus custom).
 * JS in `./js/` (split into `refactorisation.js`, `dashboard.js`, `city-focus.js`, `settings.js`, `header.js`).
-
-## Contributing Guidelines
-
-1. Fork the repo
-2. Create a new branch: `git checkout -b feature/my-feature`
-3. Commit changes: `git commit -m 'Add my feature'`
-4. Push to branch: `git push origin feature/my-feature`
-5. Open a Pull Request
-
-Please follow code style and include comments consistent with existing files.
-
-## License
-
-This project is licensed under the MIT License. See `LICENSE` for details.
-
-## Contact Information
-
-Maintainer: Ever David Beltrán Pinto — edbeltranpi.chs.gmail.com
-
-## Acknowledgements
-
-* Eleventy for static site generator
-* Bulma for CSS framework
-* Open‑Meteo for weather data API
-* SETU Waterford
->>>>>>> 8bef467 (Initial commit)
