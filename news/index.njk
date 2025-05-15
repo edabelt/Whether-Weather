@@ -1,0 +1,81 @@
+---
+layout: base.njk   
+title: "Weather News"
+subtitle: "Latest Headlines"
+permalink: "/news/"
+hideSidebar: true
+eleventyNavigation:
+  key: "News"
+  order: 3
+---
+
+<!-- Page title for news index -->
+<h1 class="title is-2 has-text-centered news-title">{{ title }}</h1>
+
+<!-- Teasers grid: two per row on desktop, one on mobile -->
+<div class="columns is-variable is-8 is-multiline">
+
+  <!-- Coral Reefs teaser: first story card -->
+  <div class="column is-half-desktop is-full-mobile is-flex">
+    <article class="card news-article is-flex is-flex-direction-column">
+      <a href="/news/coral-reefs/" class="teaser-link">
+        <div class="card-content">
+          <!-- Story headline -->
+          <header class="has-text-centered">
+            <h2 class="title is-3">
+              Climate Change Threats to Coral Reefs
+            </h2>
+          </header>
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="/images/sidebar1.png" alt="Bleached coral reefs">
+            </figure>
+          </div>
+          <div class="content">
+            <p>
+              Coral reefs are among the most biodiverse—and most threatened—ecosystems on Earth.
+            </p>
+          </div>
+        </div>
+      </a>
+      <footer class="card-footer">
+        <a href="/news/coral-reefs/" class="card-footer-item read-more">
+          Read More
+        </a>
+      </footer>
+    </article>
+  </div>
+
+  <!-- Climate Strikes teaser: second story card -->
+  <div class="column is-half-desktop is-full-mobile is-flex">
+    <article class="card news-article is-flex is-flex-direction-column">
+      <a href="/news/climate-strikes/" class="teaser-link">
+        <div class="card-content">
+          <!-- Story headline for strikes -->
+          <header class="has-text-centered">
+            <h2 class="title is-3">
+              Strikes Rise on Climate Global Challenges
+            </h2>
+          </header>
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="/images/sidebar2.jpg" alt="Climate strike demonstration">
+            </figure>
+          </div>
+          <div class="content">
+            <p>
+              Millions have taken to the streets demanding urgent climate action worldwide.
+            </p>
+          </div>
+        </div>
+      </a>
+      <!-- Read more link on a relevant and  interesting website to apply external links-->
+      <footer class="card-footer">
+        <a href="/news/climate-strikes/" class="card-footer-item read-more">
+          Read More
+        </a>
+      </footer>
+    </article>
+  </div>
+
+</div>

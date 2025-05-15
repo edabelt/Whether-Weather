@@ -1,0 +1,131 @@
+---
+layout: default
+pagination:
+  data: cities
+  size: 1
+  alias: city
+permalink: "/city/{{ city.key }}/"
+eleventyNavigation:
+  parent: Dashboard
+  key: "{{ city.label }}"
+  order: "{{ pagination.pageNumber + 1 }}"
+---
+
+<section class="section">
+  <!-- Main container for the page focused city, the data-city Id is for use in JS -->
+  <div class="container" data-city="{{ city.key }}">
+
+    <!-- Row one: City title and "Right Now" section which is represented by clock -->
+    <div class="columns is-vcentered">
+      <!-- City name and day subtitle labeled to the correspondent day-->
+      <div class="column is-one-third has-text-centered">
+        <h1 class="title is-1 city-title">{{ city.label }}</h1>
+        <h2 class="subtitle is-5"></h2>
+      </div>
+
+      <!-- Current weather box and the controls -->
+      <div class="column is-two-fourths">
+        <div class="columns is-vcentered">
+
+          <!-- "Now" card: shows current time, icon, temp & wind -->
+          <div class="column is-6">
+            <div class="box has-background-black has-text-white has-text-centered">
+              <p id="now-label" class="heading has-text-weight-bold"></p>
+              <figure class="image is-64x64 is-inline-block my-3">
+                <img id="now-icon" alt="{{ city.label }} current weather">
+              </figure>
+              <div class="columns is-mobile is-centered mt-2">
+                <div class="column">
+                  <p id="now-temp" class="title is-3 has-text-warning"></p>
+                </div>
+                <div class="column">
+                  <p id="now-wind" class="title is-3 has-text-warning"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- "Feels Like" card: shows daily feels-like high & low ciphers-->
+          <div class="column is-4">
+            <div class="box has-background-black has-text-white has-text-centered">
+              <p class="heading">Feels Like</p>
+              <p id="feels-max" class="title is-4 has-text-white has-text-weight-bold"></p>
+              <p id="feels-min" class="title is-4 has-text-white has-text-weight-bold"></p>
+            </div>
+          </div>
+
+          <!-- "Hourly Forecast" trigger: opens  modal with 24-hours weather details -->
+          <div class="column is-2">
+            <div id="hourly-trigger" class="box has-background-black has-text-white" aria-haspopup="true">
+              <div>
+                <p class="heading mb-2 has-text-white has-text-weight-bold">Hourly Forecast</p>
+                <span class="icon is-large has-text-white">
+                  <i class="fas fa-clock fa-2x"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Row two: Daily summary with big weather icon from open source, max temp & wind -->
+    <div class="columns is-vcentered mt-5">
+      <div class="column has-text-centered">
+        <figure class="image is-128x128 is-inline-block">
+          <img id="big-icon" alt="{{ city.label }} daily weather">
+        </figure>
+      </div>
+      <div class="column">
+        <div class="box has-background-black has-text-white has-text-centered">
+          <p class="heading">Max Temp</p>
+          <p id="max-temp" class="title is-4 has-text-white has-text-weight-bold"></p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="box has-background-black has-text-white has-text-centered">
+          <p class="heading">Max Wind</p>
+          <p id="max-wind" class="title is-4 has-text-white has-text-weight-bold"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row three: 7-day forecast cards -->
+    <div class="columns is-multiline is-mobile mt-5">
+      {% for idx in [0,1,2,3,4,5,6] %}
+      <div class="column has-text-centered">
+        <div class="box has-background-black has-text-white forecast-card">
+          <p id="day-{{ idx }}" class="heading has-text-white"></p>
+          <figure class="image is-48x48 is-inline-block">
+            <img id="icon-{{ idx }}" alt="Forecast icon">
+          </figure>
+          <div class="forecast-footer">
+            <p id="min-{{ idx }}" class="subtitle is-6 has-text-white"></p>
+            <p id="max-{{ idx }}" class="subtitle is-6 has-text-white"></p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Bulma modal component for detailed forecast for every hour of the day-->
+    <div class="modal" id="hourlyModal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title has-text-white" id="modal-day-label"></p>
+          <button class="delete" aria-label="close" id="modal-close"></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Container that containsw the JS-generated hourly cards -->
+          <div class="columns is-multiline" id="modal-hourly-content"></div>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-dark" id="modal-close-footer">Close</button>
+        </footer>
+      </div>
+    </div>
+
+  </div>
+</section>

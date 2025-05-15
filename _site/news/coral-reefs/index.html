@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Document settings and meta for responsiveness -->
+  <meta charset="UTF-8" />
+  <title>Climate Change Threats to Coral Reefs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bulma CSS framework for layout and components -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+  />
+
+  <!-- Custom stylesheet imports for each feature area for meet DRY purposes-->
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="stylesheet" href="/css/settings.css" />
+  <link rel="stylesheet" href="/css/city-focus.css" />
+  <link rel="stylesheet" href="/css/sidebar.css" />
+  <link rel="stylesheet" href="/css/news-index.css" />
+  <link rel="stylesheet" href="/css/dark-mode.css" />
+
+  <!-- Favicon for browser tab icon -->
+  <link rel="icon" href="/images/favicon.png" type="image/png" />
+
+  <!-- Font Awesome icons (JS kit) to cover lecture content -->
+  <script
+    src="https://kit.fontawesome.com/a2d9a66e52.js"
+    crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+
+  <!-- Header include: site-wide navigation and branding as in labs -->
+  <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/favicon.png" alt="App Logo" style="max-height:80px;">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasic" class="navbar-menu">
+      <div class="navbar-end">
+        <!-- Home, the user’s homeCity (in city-focus) -->
+        
+        <!-- The six cities on the dashboard -->
+        <a class="navbar-item has-text-white" href="/">Dashboard</a>
+
+        <a class="navbar-item has-text-white" href="/my-city/">
+          Home City
+        </a>
+
+        <a class="navbar-item has-text-white" href="/news/">
+          News
+        </a>
+        <a class="navbar-item has-text-white" href="/about/">
+          About
+        </a>
+        <a class="navbar-item has-text-white" href="/settings/">
+          Settings
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Main content area with optional sidebar  -->
+  <main class="section">
+    <div class="container">
+      <div class="columns is-align-items-start">
+
+        <!-- Primary content column (dashboard or city-focus) -->
+        <section class="column is-three-quarters">
+          
+<article class="section">
+
+  <!-- Hero Image from open source: visual lead for the article -->
+  <figure class="image is-16by9 mb-5">
+    <img src="/images/sidebar1.png" alt="Bleached coral reefs">
+    <figcaption class="has-text-centered has-text-grey mt-2">
+      A once-vibrant reef now pale and bleached
+    </figcaption>
+  </figure>
+
+  <!-- Article body that contains the core content without extra headings -->
+  <div class="content is-medium">
+    <p>
+      Coral reefs harbor more species per square meter than any other marine environment, yet they are among the first ecosystems to suffer under climate change. As sea temperatures climb, these delicate animals expel their symbiotic algae, turning white in a process known as bleaching—and if prolonged, leading to mass die-offs.
+    </p>
+
+    <h2 class="title is-3 mt-6">The Science Behind Bleaching</h2>
+    <p>
+      Corals rely on microscopic algae (zooxanthellae) for up to 90% of their energy. When waters warm just 1–2°C above seasonal peaks, this partnership breaks down:
+    </p>
+    <ul>
+      <li><strong>Oxidative stress:</strong> Heat damages algal photosystems, producing toxic oxygen radicals.</li>
+      <li><strong>Algae expulsion:</strong> Corals eject the stressed algae to protect themselves, losing their primary food source.</li>
+      <li><strong>Mortality risk:</strong> Without photosynthesis-derived nutrients, corals starve if bleaching persists for more than a few weeks.</li>
+    </ul>
+
+    <h2 class="title is-3 special">Climate Change Threats to Coral Reefs</h2>
+    <p>
+      Today, over 60% of the world’s reefs have experienced bleaching, and annual mass-bleaching events are now the norm. These ecosystems:
+    </p>
+    <ul>
+      <li>Protect coastlines by buffering waves—avoiding an estimated $94 billion in storm damage each year.</li>
+      <li>Support fisheries that feed over 1 billion people.</li>
+      <li>Generate $36 billion annually in tourism.</li>
+    </ul>
+
+    <h2 class="title is-3 special">Saving Our Reefs: Efforts Underway</h2>
+    <p>
+      Scientists and communities are racing to save reefs:
+    </p>
+    <ol>
+      <li><strong>Assisted evolution:</strong> Breeding heat-tolerant coral strains and outplanting them on vulnerable reefs.</li>
+      <li><strong>Local protections:</strong> Marine protected areas to reduce pollution, overfishing, and physical damage.</li>
+      <li><strong>Global emissions cuts:</strong> Limiting warming to 1.5 °C to give reefs a chance to recover.</li>
+    </ol>
+
+    <!-- CTA button to authoritative and interesting report to credit the source -->
+    <section class="has-text-centered my-6">
+      <a href="https://www.ipcc.ch/srocc/" class="button is-large is-warning">
+        Learn More from the IPCC Report
+      </a>
+    </section>
+  </div>
+
+  <!-- Footer: show  date of publication and a link to get back-->
+  <footer class="has-text-centered py-6">
+    <p class="has-text-grey">
+      Published May 11, 2025 • <a href="/news/">Back to News</a>
+    </p>
+  </footer>
+
+</article>
+        </section>
+
+        <!-- Sidebar: shown unless hideSidebar flag is true so content is not repeated in page and sidebar-->
+        
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer that include: site-wide footer links and copyright -->
+  <footer class="footer has-background-light">
+  <div class="content has-text-centered">
+    <p>&copy; 2025 Whether Weather App. All rights reserved.</p>
+  </div>
+</footer>
+
+  <!-- JavaScript modules and scripts loaded defer for smother or more accurate functioning -->
+  <script type="module" src="/js/refactorisation.js" defer></script>
+  <script type="module" src="/js/settings.js" defer></script>
+  <script type="module" src="/js/dashboard.js" defer></script>
+  <script src="/js/weather_data.js"></script>
+  <script type="module" src="/js/city-focus.js" defer></script>
+  <script type="module" src="/js/header.js" defer></script>
+
+</body>
+</html>

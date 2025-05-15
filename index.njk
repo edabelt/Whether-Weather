@@ -1,0 +1,52 @@
+---
+layout: default
+title: Dashboard
+eleventyNavigation:
+key: Dashboard
+order: 1
+---
+
+<section class="section">
+  <div class="container">
+
+    <!-- Header row -->
+    <div class="columns is-vcentered is-centered">
+      <div class="column is-narrow has-text-centered">
+        <h1 class="title is-1 dashboard-title">Dashboard</h1>
+        <h2 class="subtitle is-5">Today</h2>
+      </div>
+    </div>
+
+    <!-- All six cities in one responsive loop -->
+    <div class="columns is-multiline is-mobile">
+      {% for city in cities %}
+      <div class="column is-one-third">
+        <a
+        class="city-box"
+        data-city="{{ city.key }}"
+        href="/city/{{ city.key }}/"
+        >
+        <div class="box has-background-black has-text-white has-text-centered">
+          <p class="heading">{{ city.label }}</p>
+
+          <!-- Weather icon placeholder; dashboard.js will set src -->
+          <figure class="image is-96x96 is-inline-block my-3">
+            <img class="weather-icon" alt="{{ city.label }} weather">
+          </figure>
+
+          <div class="columns is-mobile is-centered">
+            <div class="column">
+              <p class="title is-3 has-text-white  min-temp"></p>
+            </div>
+            <div class="column">
+              <p class="title is-3 has-text-white  max-temp"></p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+</section>

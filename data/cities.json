@@ -1,0 +1,8 @@
+[
+  { "key": "berlin",     "label": "Berlin"     },
+  { "key": "amsterdam",  "label": "Amsterdam"  },
+  { "key": "waterford",  "label": "Waterford"  },
+  { "key": "copenhagen", "label": "Copenhagen" },
+  { "key": "cork",       "label": "Cork"       },
+  { "key": "paris",      "label": "Paris"      }
+]

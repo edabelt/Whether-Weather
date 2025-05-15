@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Document settings and meta for responsiveness -->
+  <meta charset="UTF-8" />
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bulma CSS framework for layout and components -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+  />
+
+  <!-- Custom stylesheet imports for each feature area for meet DRY purposes-->
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="stylesheet" href="/css/settings.css" />
+  <link rel="stylesheet" href="/css/city-focus.css" />
+  <link rel="stylesheet" href="/css/sidebar.css" />
+  <link rel="stylesheet" href="/css/news-index.css" />
+  <link rel="stylesheet" href="/css/dark-mode.css" />
+
+  <!-- Favicon for browser tab icon -->
+  <link rel="icon" href="/images/favicon.png" type="image/png" />
+
+  <!-- Font Awesome icons (JS kit) to cover lecture content -->
+  <script
+    src="https://kit.fontawesome.com/a2d9a66e52.js"
+    crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+
+  <!-- Header include: site-wide navigation and branding as in labs -->
+  {% include "header.njk" %}
+
+  <!-- Main content area with optional sidebar  -->
+  <main class="section">
+    <div class="container">
+      <div class="columns is-align-items-start">
+
+        <!-- Primary content column (dashboard or city-focus) -->
+        <section class="column is-three-quarters">
+          {{ content | safe }}
+        </section>
+
+        <!-- Sidebar: shown unless hideSidebar flag is true so content is not repeated in page and sidebar-->
+        {% if not hideSidebar %}
+        <aside class="column is-one-quarter is-sticky">
+          {% include "sidebar.njk" %}
+        </aside>
+        {% endif %}
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer that include: site-wide footer links and copyright -->
+  {% include "footer.njk" %}
+
+  <!-- JavaScript modules and scripts loaded defer for smother or more accurate functioning -->
+  <script type="module" src="/js/refactorisation.js" defer></script>
+  <script type="module" src="/js/settings.js" defer></script>
+  <script type="module" src="/js/dashboard.js" defer></script>
+  <script src="/js/weather_data.js"></script>
+  <script type="module" src="/js/city-focus.js" defer></script>
+  <script type="module" src="/js/header.js" defer></script>
+
+</body>
+</html>

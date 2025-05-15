@@ -1,0 +1,46 @@
+/* Style for the Sidebar container */
+.content.box {
+  position: relative;
+}
+
+/* Weather News header link */
+.content.box > h1.title a {
+  display: inline-block;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: inherit;
+}
+.content.box > h1.title a:hover {
+  background-color: rgba(255,255,255,0.1);
+  color: #ff4d00;
+}
+
+/* Teaser blocks wrap */
+.content.box a.block {
+  display: block;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Hover effect on teaser */
+.content.box a.block:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* The card shadow on hover */
+.content.box a.block:hover .card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Change teaser titles on hover */
+.content.box a.block:hover h2.special {
+  color: #ff4d00;
+}
+
+/* Dark‐mode toggle: change to white */
+body.dark-mode .sidebar-news .sidebar-news-link {
+  color: #ffffff !important;
+}

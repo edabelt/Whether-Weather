@@ -1,0 +1,20 @@
+// .eleventy.js
+const pluginNavigation = require("@11ty/eleventy-navigation");
+module.exports = function(eleventyConfig) {
+  eleventyConfig.addPlugin(pluginNavigation);
+  eleventyConfig.addPassthroughCopy("images");
+  eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("js");
+  eleventyConfig.addPassthroughCopy("data");
+  eleventyConfig.addLayoutAlias("default", "base.njk");
+  return {
+    dir: {
+      input: ".",
+      includes: "_includes",
+      data:    "data",
+      output:  "_site"
+    },
+    htmlTemplateEngine: "njk",
+    dataTemplateEngine: "njk"
+  };
+};

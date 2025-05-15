@@ -1,0 +1,86 @@
+---
+layout: base.njk
+title: Settings
+eleventyNavigation:
+key: Settings
+order: 3
+---
+
+<section class="section">
+  <div class="container">
+    <h1 class="title has-text-centered settings-title">Settings</h1>
+
+    <form id="prefsForm">
+
+      <!-- Home City (radio) -->
+      <div class="box">
+        <h2 class="subtitle">Choose your Home City</h2>
+        <div class="columns is-multiline is-mobile">
+          {% for city in cities %}
+          <div class="column is-one-third">
+            <label class="radio">
+              <input type="radio" name="homeCity" id="home-{{ city.key }}" value="{{ city.key }}">
+              {{ city.label }}
+            </label>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Favourite Cities (checkbox) -->
+      <div class="box">
+        <h2 class="subtitle">Choose your Favourite Cities</h2>
+        <div class="columns is-multiline is-mobile">
+          {% for city in cities %}
+          <div class="column is-one-third">
+            <label class="checkbox">
+              <input type="checkbox" name="favCities" id="fav-{{ city.key }}" value="{{ city.key }}">
+              {{ city.label }}
+            </label>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Units Toggle -->
+      <div class="box">
+        <h2 class="subtitle">Units</h2>
+        <div class="field">
+          <label class="radio">
+            <input type="radio" name="units" id="units-metric" value="metric">
+            °C / km/h (Metric)
+          </label>
+        </div>
+        <div class="field">
+          <label class="radio">
+            <input type="radio" name="units" id="units-imperial" value="imperial">
+            °F / mph (Imperial)
+          </label>
+        </div>
+      </div>
+
+      <!-- Theme Switcher -->
+      <div class="box">
+        <h2 class="subtitle">Theme</h2>
+        <div class="field">
+          <input type="checkbox" id="themeToggle">
+          <label for="themeToggle">Dark Mode</label>
+        </div>
+      </div>
+
+      <!-- Save / Reset bottons -->
+      <div class="field is-grouped is-grouped-centered mt-4">
+        <p class="control">
+          <button type="button" class="button is-dark" id="resetPrefs">
+            Reset Preferences
+          </button>
+        </p>
+        <p class="control">
+          <button type="button" class="button is-dark" id="savePrefs">
+            Save Preferences
+          </button>
+        </p>
+      </div>
+  </form>
+</div>
+</section>

@@ -1,0 +1,143 @@
+{
+  "latitude": 69.67531,
+  "longitude": 18.922867,
+  "generationtime_ms": 0.3069639205932617,
+  "utc_offset_seconds": 0,
+  "timezone": "GMT",
+  "timezone_abbreviation": "GMT",
+  "elevation": 0.0,
+  "daily_units": {
+    "time": "iso8601",
+    "weather_code": "wmo code",
+    "temperature_2m_max": "°C",
+    "temperature_2m_min": "°C",
+    "apparent_temperature_max": "°C",
+    "apparent_temperature_min": "°C",
+    "sunrise": "iso8601",
+    "sunset": "iso8601",
+    "precipitation_hours": "h",
+    "precipitation_probability_max": "%",
+    "wind_speed_10m_max": "km/h",
+    "wind_gusts_10m_max": "km/h",
+    "wind_direction_10m_dominant": "°"
+  },
+  "daily": {
+    "time": [
+      "Today",
+      "Today+1",
+      "Today+2",
+      "Today+3",
+      "Today+4",
+      "Today+5",
+      "Today+6"
+    ],
+    "weather_code": [
+      51,
+      51,
+      71,
+      2,
+      3,
+      71,
+      3
+    ],
+    "temperature_2m_max": [
+      2.2,
+      1.7,
+      2.4,
+      0.9,
+      0.1,
+      1.0,
+      2.4
+    ],
+    "temperature_2m_min": [
+      -1.5,
+      -2.1,
+      -2.1,
+      -2.9,
+      -3.1,
+      -1.6,
+      -2.1
+    ],
+    "apparent_temperature_max": [
+      -0.2,
+      -1.4,
+      -1.0,
+      -2.7,
+      -3.7,
+      -2.3,
+      -0.9
+    ],
+    "apparent_temperature_min": [
+      -4.8,
+      -5.3,
+      -5.6,
+      -6.5,
+      -6.9,
+      -6.2,
+      -5.5
+    ],
+    "sunrise": [
+      "TodayT05:39",
+      "Today+1T05:35",
+      "Today+2T05:30",
+      "Today+3T05:26",
+      "Today+4T05:21",
+      "Today+5T05:17",
+      "Today+6T05:12"
+    ],
+    "sunset": [
+      "TodayT16:10",
+      "Today+1T16:14",
+      "Today+2T16:18",
+      "Today+3T16:22",
+      "Today+4T16:26",
+      "Today+5T16:30",
+      "Today+6T16:34"
+    ],
+    "precipitation_hours": [
+      1.0,
+      3.0,
+      4.0,
+      0.0,
+      0.0,
+      9.0,
+      0.0
+    ],
+    "precipitation_probability_max": [
+      58,
+      65,
+      71,
+      45,
+      18,
+      58,
+      52
+    ],
+    "wind_speed_10m_max": [
+      7.2,
+      9.7,
+      16.9,
+      8.4,
+      10.4,
+      14.9,
+      6.7
+    ],
+    "wind_gusts_10m_max": [
+      10.1,
+      16.2,
+      25.2,
+      14.8,
+      19.8,
+      31.3,
+      11.2
+    ],
+    "wind_direction_10m_dominant": [
+      276,
+      187,
+      190,
+      170,
+      167,
+      177,
+      144
+    ]
+  }
+}

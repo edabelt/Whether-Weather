@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Document settings and meta for responsiveness -->
+  <meta charset="UTF-8" />
+  <title>Weather News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bulma CSS framework for layout and components -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+  />
+
+  <!-- Custom stylesheet imports for each feature area for meet DRY purposes-->
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="stylesheet" href="/css/settings.css" />
+  <link rel="stylesheet" href="/css/city-focus.css" />
+  <link rel="stylesheet" href="/css/sidebar.css" />
+  <link rel="stylesheet" href="/css/news-index.css" />
+  <link rel="stylesheet" href="/css/dark-mode.css" />
+
+  <!-- Favicon for browser tab icon -->
+  <link rel="icon" href="/images/favicon.png" type="image/png" />
+
+  <!-- Font Awesome icons (JS kit) to cover lecture content -->
+  <script
+    src="https://kit.fontawesome.com/a2d9a66e52.js"
+    crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+
+  <!-- Header include: site-wide navigation and branding as in labs -->
+  <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/favicon.png" alt="App Logo" style="max-height:80px;">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasic" class="navbar-menu">
+      <div class="navbar-end">
+        <!-- Home, the user’s homeCity (in city-focus) -->
+        
+        <!-- The six cities on the dashboard -->
+        <a class="navbar-item has-text-white" href="/">Dashboard</a>
+
+        <a class="navbar-item has-text-white" href="/my-city/">
+          Home City
+        </a>
+
+        <a class="navbar-item has-text-white" href="/news/">
+          News
+        </a>
+        <a class="navbar-item has-text-white" href="/about/">
+          About
+        </a>
+        <a class="navbar-item has-text-white" href="/settings/">
+          Settings
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Main content area with optional sidebar  -->
+  <main class="section">
+    <div class="container">
+      <div class="columns is-align-items-start">
+
+        <!-- Primary content column (dashboard or city-focus) -->
+        <section class="column is-three-quarters">
+          
+<!-- Page title for news index -->
+<h1 class="title is-2 has-text-centered news-title">Weather News</h1>
+
+<!-- Teasers grid: two per row on desktop, one on mobile -->
+<div class="columns is-variable is-8 is-multiline">
+
+  <!-- Coral Reefs teaser: first story card -->
+  <div class="column is-half-desktop is-full-mobile is-flex">
+    <article class="card news-article is-flex is-flex-direction-column">
+      <a href="/news/coral-reefs/" class="teaser-link">
+        <div class="card-content">
+          <!-- Story headline -->
+          <header class="has-text-centered">
+            <h2 class="title is-3">
+              Climate Change Threats to Coral Reefs
+            </h2>
+          </header>
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="/images/sidebar1.png" alt="Bleached coral reefs">
+            </figure>
+          </div>
+          <div class="content">
+            <p>
+              Coral reefs are among the most biodiverse—and most threatened—ecosystems on Earth.
+            </p>
+          </div>
+        </div>
+      </a>
+      <footer class="card-footer">
+        <a href="/news/coral-reefs/" class="card-footer-item read-more">
+          Read More
+        </a>
+      </footer>
+    </article>
+  </div>
+
+  <!-- Climate Strikes teaser: second story card -->
+  <div class="column is-half-desktop is-full-mobile is-flex">
+    <article class="card news-article is-flex is-flex-direction-column">
+      <a href="/news/climate-strikes/" class="teaser-link">
+        <div class="card-content">
+          <!-- Story headline for strikes -->
+          <header class="has-text-centered">
+            <h2 class="title is-3">
+              Strikes Rise on Climate Global Challenges
+            </h2>
+          </header>
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="/images/sidebar2.jpg" alt="Climate strike demonstration">
+            </figure>
+          </div>
+          <div class="content">
+            <p>
+              Millions have taken to the streets demanding urgent climate action worldwide.
+            </p>
+          </div>
+        </div>
+      </a>
+      <!-- Read more link on a relevant and  interesting website to apply external links-->
+      <footer class="card-footer">
+        <a href="/news/climate-strikes/" class="card-footer-item read-more">
+          Read More
+        </a>
+      </footer>
+    </article>
+  </div>
+
+</div>
+        </section>
+
+        <!-- Sidebar: shown unless hideSidebar flag is true so content is not repeated in page and sidebar-->
+        
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer that include: site-wide footer links and copyright -->
+  <footer class="footer has-background-light">
+  <div class="content has-text-centered">
+    <p>&copy; 2025 Whether Weather App. All rights reserved.</p>
+  </div>
+</footer>
+
+  <!-- JavaScript modules and scripts loaded defer for smother or more accurate functioning -->
+  <script type="module" src="/js/refactorisation.js" defer></script>
+  <script type="module" src="/js/settings.js" defer></script>
+  <script type="module" src="/js/dashboard.js" defer></script>
+  <script src="/js/weather_data.js"></script>
+  <script type="module" src="/js/city-focus.js" defer></script>
+  <script type="module" src="/js/header.js" defer></script>
+
+</body>
+</html>

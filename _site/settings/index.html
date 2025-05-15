@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Document settings and meta for responsiveness -->
+  <meta charset="UTF-8" />
+  <title>Settings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bulma CSS framework for layout and components -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+  />
+
+  <!-- Custom stylesheet imports for each feature area for meet DRY purposes-->
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="stylesheet" href="/css/settings.css" />
+  <link rel="stylesheet" href="/css/city-focus.css" />
+  <link rel="stylesheet" href="/css/sidebar.css" />
+  <link rel="stylesheet" href="/css/news-index.css" />
+  <link rel="stylesheet" href="/css/dark-mode.css" />
+
+  <!-- Favicon for browser tab icon -->
+  <link rel="icon" href="/images/favicon.png" type="image/png" />
+
+  <!-- Font Awesome icons (JS kit) to cover lecture content -->
+  <script
+    src="https://kit.fontawesome.com/a2d9a66e52.js"
+    crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+
+  <!-- Header include: site-wide navigation and branding as in labs -->
+  <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/images/favicon.png" alt="App Logo" style="max-height:80px;">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasic" class="navbar-menu">
+      <div class="navbar-end">
+        <!-- Home, the user’s homeCity (in city-focus) -->
+        
+        <!-- The six cities on the dashboard -->
+        <a class="navbar-item has-text-white" href="/">Dashboard</a>
+
+        <a class="navbar-item has-text-white" href="/my-city/">
+          Home City
+        </a>
+
+        <a class="navbar-item has-text-white" href="/news/">
+          News
+        </a>
+        <a class="navbar-item has-text-white" href="/about/">
+          About
+        </a>
+        <a class="navbar-item has-text-white" href="/settings/">
+          Settings
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Main content area with optional sidebar  -->
+  <main class="section">
+    <div class="container">
+      <div class="columns is-align-items-start">
+
+        <!-- Primary content column (dashboard or city-focus) -->
+        <section class="column is-three-quarters">
+          
+<section class="section">
+  <div class="container">
+    <h1 class="title has-text-centered settings-title">Settings</h1>
+
+    <form id="prefsForm">
+
+      <!-- Home City (radio) -->
+      <div class="box">
+        <h2 class="subtitle">Choose your Home City</h2>
+        <div class="columns is-multiline is-mobile">
+          
+          <div class="column is-one-third">
+            <label class="radio">
+              <input type="radio" name="homeCity" id="home-berlin" value="berlin">
+              Berlin
+            </label>
+          </div>
+          
+          <div class="column is-one-third">
+            <label class="radio">
+              <input type="radio" name="homeCity" id="home-amsterdam" value="amsterdam">
+              Amsterdam
+            </label>
+          </div>
+          
+          <div class="column is-one-third">
+            <label class="radio">
+              <input type="radio" name="homeCity" id="home-waterford" value="waterford">
+              Waterford
+            </label>
+          </div>
+          
+          <div class="column is-one-third">
+            <label class="radio">
+              <input type="radio" name="homeCity" id="home-copenhagen" value="copenhagen">
+              Copenhagen
+            </label>
+          </div>
+          
+          <div class="column is-one-third">
+            <label class="radio">
+              <input type="radio" name="homeCity" id="home-cork" value="cork">
+              Cork
+            </label>
+          </div>
+          
+          <div class="column is-one-third">
+            <label class="radio">
+              <input type="radio" name="homeCity" id="home-paris" value="paris">
+              Paris
+            </label>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- Favourite Cities (checkbox) -->
+      <div class="box">
+        <h2 class="subtitle">Choose your Favourite Cities</h2>
+        <div class="columns is-multiline is-mobile">
+          
+          <div class="column is-one-third">
+            <label class="checkbox">
+              <input type="checkbox" name="favCities" id="fav-berlin" value="berlin">
+              Berlin
+            </label>
+          </div>
+          
+          <div class="column is-one-third">
+            <label class="checkbox">
+              <input type="checkbox" name="favCities" id="fav-amsterdam" value="amsterdam">
+              Amsterdam
+            </label>
+          </div>
+          
+          <div class="column is-one-third">
+            <label class="checkbox">
+              <input type="checkbox" name="favCities" id="fav-waterford" value="waterford">
+              Waterford
+            </label>
+          </div>
+          
+          <div class="column is-one-third">
+            <label class="checkbox">
+              <input type="checkbox" name="favCities" id="fav-copenhagen" value="copenhagen">
+              Copenhagen
+            </label>
+          </div>
+          
+          <div class="column is-one-third">
+            <label class="checkbox">
+              <input type="checkbox" name="favCities" id="fav-cork" value="cork">
+              Cork
+            </label>
+          </div>
+          
+          <div class="column is-one-third">
+            <label class="checkbox">
+              <input type="checkbox" name="favCities" id="fav-paris" value="paris">
+              Paris
+            </label>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- Units Toggle -->
+      <div class="box">
+        <h2 class="subtitle">Units</h2>
+        <div class="field">
+          <label class="radio">
+            <input type="radio" name="units" id="units-metric" value="metric">
+            °C / km/h (Metric)
+          </label>
+        </div>
+        <div class="field">
+          <label class="radio">
+            <input type="radio" name="units" id="units-imperial" value="imperial">
+            °F / mph (Imperial)
+          </label>
+        </div>
+      </div>
+
+      <!-- Theme Switcher -->
+      <div class="box">
+        <h2 class="subtitle">Theme</h2>
+        <div class="field">
+          <input type="checkbox" id="themeToggle">
+          <label for="themeToggle">Dark Mode</label>
+        </div>
+      </div>
+
+      <!-- Save / Reset bottons -->
+      <div class="field is-grouped is-grouped-centered mt-4">
+        <p class="control">
+          <button type="button" class="button is-dark" id="resetPrefs">
+            Reset Preferences
+          </button>
+        </p>
+        <p class="control">
+          <button type="button" class="button is-dark" id="savePrefs">
+            Save Preferences
+          </button>
+        </p>
+      </div>
+  </form>
+</div>
+</section>
+
+        </section>
+
+        <!-- Sidebar: shown unless hideSidebar flag is true so content is not repeated in page and sidebar-->
+        
+        <aside class="column is-one-quarter is-sticky">
+          <div class="content box sidebar-news">
+  <h1 class="title is-3 has-text-weight-bold">
+    <a href="/news/" class="sidebar-news-link">
+      Weather News
+    </a>
+  </h1>
+
+  <!--Part for Coral Reefs-->
+  <a href="/news/coral-reefs/" class="block">
+    <h2 class="special mb-3">Climate Change Threats to Coral Reefs</h2>
+    <div class="card mb-5">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="/images/sidebar1.png" alt="Bleached coral reefs" class="is-fullwidth">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p>
+          Coral reefs are among the planet’s most diverse—and most vulnerable—ecosystems. Rising sea temperatures and acidification drive mass bleaching, threatening food security and coastal protection for hundreds of millions.
+        </p>
+      </div>
+    </div>
+  </a>
+
+  <!-- Part for Climate Strikes -->
+  <a href="/news/climate-strikes/" class="block">
+    <h2 class="special mb-3">Strikes Rise on Climate Global Challenges</h2>
+    <div class="card mb-5">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="/images/sidebar2.jpg" alt="Climate strike demonstration" class="is-fullwidth">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p>
+          From student walkouts to labor union stoppages, millions worldwide are striking for bold, immediate climate action—pushing governments to declare emergencies and phase out fossil fuels.
+        </p>
+      </div>
+    </div>
+  </a>
+</div>
+
+        </aside>
+        
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer that include: site-wide footer links and copyright -->
+  <footer class="footer has-background-light">
+  <div class="content has-text-centered">
+    <p>&copy; 2025 Whether Weather App. All rights reserved.</p>
+  </div>
+</footer>
+
+  <!-- JavaScript modules and scripts loaded defer for smother or more accurate functioning -->
+  <script type="module" src="/js/refactorisation.js" defer></script>
+  <script type="module" src="/js/settings.js" defer></script>
+  <script type="module" src="/js/dashboard.js" defer></script>
+  <script src="/js/weather_data.js"></script>
+  <script type="module" src="/js/city-focus.js" defer></script>
+  <script type="module" src="/js/header.js" defer></script>
+
+</body>
+</html>
