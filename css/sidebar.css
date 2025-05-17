@@ -26,13 +26,13 @@
 
 /* Hover effect on teaser */
 .content.box a.block:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.30);
   transform: translateY(-2px);
 }
 
 /* The card shadow on hover */
 .content.box a.block:hover .card {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
 }
 
 /* Change teaser titles on hover */

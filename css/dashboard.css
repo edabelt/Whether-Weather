@@ -22,7 +22,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.30);
   pointer-events: none;
   transition: background 0.2s ease;
 }
