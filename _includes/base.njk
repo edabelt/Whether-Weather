@@ -59,13 +59,14 @@
   <!-- Footer that include: site-wide footer links and copyright -->
   {% include "footer.njk" %}
 
-  <!-- JavaScript modules and scripts loaded defer for smother or more accurate functioning -->
   <script type="module" src="/js/refactorisation.js" defer></script>
+  <script type="module" src="/js/dataStore.js"       defer></script>
+  <script type="module" src="/js/views/dashboardView.js" defer></script>
+  <script type="module" src="/js/views/cityView.js"      defer></script>
+  <script type="module" src="/js/controllers/dashboardController.js" defer></script>
+  <script type="module" src="/js/controllers/cityController.js"      defer></script>
+  <script type="module" src="/js/header.js"   defer></script>
   <script type="module" src="/js/settings.js" defer></script>
-  <script type="module" src="/js/dashboard.js" defer></script>
-  <script src="/js/weather_data.js"></script>
-  <script type="module" src="/js/city-focus.js" defer></script>
-  <script type="module" src="/js/header.js" defer></script>
-
+  
 </body>
 </html>

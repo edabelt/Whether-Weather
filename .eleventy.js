@@ -1,7 +1,6 @@
 // .eleventy.js
-const pluginNavigation = require("@11ty/eleventy-navigation");
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPlugin(pluginNavigation);
+  eleventyConfig.addPlugin(require("@11ty/eleventy-navigation"));
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("js");

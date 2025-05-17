@@ -1,10 +1,11 @@
-//JavaScript refactorised
+// /js/city-focus.js
 import {
   mapWMOtoOWM,
   getUnits,
   formatTemp,
   formatWind
 } from "./refactorisation.js";
+import * as DataStore from "./dataStore.js";
 
 // Bail out if this aint a city-focus page — only run on the city pages
 function isCityFocusPage() {
@@ -19,21 +20,7 @@ function getDayLabel(offset) {
   return d.toLocaleDateString(undefined, { weekday: 'long' });
 }
 
-// Helper: find matching index in hourly.time for given date and hour to be displayed in current hour
-function findHourlyIndex(hourly, dateStr, hour) {
-  const HH = String(hour).padStart(2, '0');
-  const prefix = `${dateStr}T${HH}:`;
-  let idx = hourly.time.findIndex(ts => ts.startsWith(prefix));
-  if (idx < 0) {
-    // fallback to first entry of that day
-    const dayPrefix = `${dateStr}T`;
-    idx = hourly.time.findIndex(ts => ts.startsWith(dayPrefix));
-    if (idx < 0) idx = 0;
-  }
-  return idx;
-}
-
-// Main entry: fetch data and set up renderers 
+// Main entry: fetch data and set up renderers
 document.addEventListener("DOMContentLoaded", async () => {
   if (!isCityFocusPage()) return;
   const container = document.querySelector('.container[data-city]');
@@ -62,10 +49,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     modalHourlyCont: document.getElementById('modal-hourly-content')
   };
 
-  // Fetch daily & hourly json parallel
-  const [{ daily }, { hourly }] = await Promise.all([
-    fetch(`/data/${cityKey}_daily.json`).then(r => r.json()),
-    fetch(`/data/${cityKey}_hourly.json`).then(r => r.json())
+  // Fetch daily & hourly json via DataStore
+  const [daily, hourly] = await Promise.all([
+    DataStore.getDaily(cityKey),
+    DataStore.getHourly(cityKey)
   ]);
 
   let selectedDay = 0; // 0 = today index
@@ -76,23 +63,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     const hh = now.getHours();
     const HH = String(hh).padStart(2, '0');
     const MM = String(now.getMinutes()).padStart(2, '0');
+
     dom.nowLabel.innerHTML = `<span class=\"icon is-small\"><i class=\"fas fa-clock\"></i></span> ${HH}:${MM}`;
     const dateStr = daily.time[selectedDay];
-    const idx = findHourlyIndex(hourly, dateStr, hh);
+    const idx = DataStore.findHourlyIndex(hourly, dateStr, hh);
     const codeArr = hourly.weather_code || hourly.weathercode;
     const code = Array.isArray(codeArr) ? codeArr[idx] : codeArr;
-    dom.nowIcon.src = `https://openweathermap.org/img/wn/${mapWMOtoOWM(code)}@2x.png`;
-    dom.nowIcon.alt = `Weather at ${HH}:00`;
+
+    dom.nowIcon.src        = `https://openweathermap.org/img/wn/${mapWMOtoOWM(code)}@2x.png`;
+    dom.nowIcon.alt        = `Weather at ${HH}:00`;
     dom.nowTemp.textContent = formatTemp(hourly.temperature_2m[idx]);
     dom.nowWind.textContent = formatWind(hourly.wind_speed_10m[idx]);
   }
 
-  // Render daily summary: big icon, max temp & wind, feels-like 
+  // Render daily summary: big icon, max temp & wind, feels-like
   function renderDailySummary() {
     dom.subtitle.textContent = getDayLabel(selectedDay);
     const codeArr = daily.weather_code || daily.weathercode;
-    const code = Array.isArray(codeArr) ? codeArr[selectedDay] : codeArr;
-    dom.bigIcon.src = `https://openweathermap.org/img/wn/${mapWMOtoOWM(code)}@2x.png`;
+    const code    = Array.isArray(codeArr) ? codeArr[selectedDay] : codeArr;
+
+    dom.bigIcon.src       = `https://openweathermap.org/img/wn/${mapWMOtoOWM(code)}@2x.png`;
     dom.maxTemp.textContent = formatTemp(daily.temperature_2m_max[selectedDay]);
     dom.maxWind.textContent = formatWind(daily.wind_speed_10m_max[selectedDay]);
     const hMax = daily.apparent_temperature_max?.[selectedDay];
@@ -106,13 +96,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     const base = new Date();
     daily.time.forEach((_, i) => {
       const label = i === 0
-        ? 'Today'
+        ? getDayLabel(0)
         : new Date(base.getFullYear(), base.getMonth(), base.getDate() + i)
             .toLocaleDateString(undefined, { weekday: 'short' });
       document.getElementById(`day-${i}`).textContent = label;
       const codeArr = daily.weather_code || daily.weathercode;
-      const code = Array.isArray(codeArr) ? codeArr[i] : codeArr;
-      const iconEl = document.getElementById(`icon-${i}`);
+      const code    = Array.isArray(codeArr) ? codeArr[i] : codeArr;
+      const iconEl  = document.getElementById(`icon-${i}`);
+
       iconEl.src = `https://openweathermap.org/img/wn/${mapWMOtoOWM(code)}@2x.png`;
       iconEl.alt = `Forecast: ${label}`;
       document.getElementById(`min-${i}`).textContent = formatTemp(daily.temperature_2m_min[i]);
@@ -126,26 +117,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     const container = dom.modalHourlyCont;
     container.innerHTML = '';
     const dateStr = daily.time[selectedDay];
+
     for (let h = 0; h < 24; h++) {
-      // create one card per hour
       const col = document.createElement('div');
       col.className = 'column is-one-sixth';
       const box = document.createElement('div');
       box.className = 'box has-background-black has-text-white is-size-7 p-2';
+
       const lbl = document.createElement('p');
       lbl.className = 'has-text-warning has-text-weight-bold';
       lbl.textContent = `${String(h).padStart(2, '0')}:00`;
       box.appendChild(lbl);
-      const idx = findHourlyIndex(hourly, dateStr, h);
+
+      const idx = DataStore.findHourlyIndex(hourly, dateStr, h);
       const tempP = document.createElement('p');
       tempP.textContent = formatTemp(hourly.temperature_2m[idx]);
       box.appendChild(tempP);
       const windP = document.createElement('p');
       windP.textContent = formatWind(hourly.wind_speed_10m[idx]);
       box.appendChild(windP);
+
       col.appendChild(box);
       container.appendChild(col);
     }
+
     dom.modal.classList.add('is-active');
   }
 

@@ -1,15 +1,9 @@
 // settings manage theme, units, and preferences of the app
-import {
-  DEFAULT_CITY,
-  getTheme,
-  setTheme,
-  getUnits,
-  setUnits
-} from './refactorisation.js';
+import * as DataStore from './dataStore.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Dark-mode: apply saved theme on page load
-  const currentTheme = getTheme();
+  const currentTheme = DataStore.getTheme();
   document.body.classList.toggle('dark-mode', currentTheme === 'dark');
 
   // Theme toggle switch in the header or settings
@@ -18,43 +12,42 @@ document.addEventListener('DOMContentLoaded', () => {
     themeToggle.checked = currentTheme === 'dark';
     themeToggle.addEventListener('change', () => {
       const newTheme = themeToggle.checked ? 'dark' : 'light';
-      setTheme(newTheme);
+      DataStore.setTheme(newTheme);
       document.body.classList.toggle('dark-mode', newTheme === 'dark');
     });
   }
 
   // Units toggle radios (metric ⇄ imperial)
-  // remember user choice for temperatures & wind on settings
-  const currentUnits = getUnits();
+  const currentUnits = DataStore.getUnits();
   document.querySelectorAll('input[name="units"]').forEach(radio => {
     radio.checked = currentUnits === radio.value;
     radio.addEventListener('change', () => {
-      setUnits(radio.value);
+      DataStore.setUnits(radio.value);
       // optional: refresh page to apply new units everywhere
     });
   });
 
-  // Settings page: home city & favourite cities form (implementing lecture concepts: arrays)
+  // Settings page: home city & favourite cities form
   const favCheckboxes = Array.from(document.querySelectorAll('input[name="favCities"]'));
-  const homeRadios = Array.from(document.querySelectorAll('input[name="homeCity"]'));
-  const saveBtn = document.getElementById('savePrefs');
-  const resetBtn = document.getElementById('resetPrefs');
+  const homeRadios    = Array.from(document.querySelectorAll('input[name="homeCity"]'));
+  const saveBtn       = document.getElementById('savePrefs');
+  const resetBtn      = document.getElementById('resetPrefs');
 
-  if (!saveBtn) return; // not on settings page, bail out
+  if (!saveBtn) return;  // not on settings page, bail out
 
   // Load and set favourite checkboxes
-  const storedFavs = JSON.parse(localStorage.getItem('favCities') || '[]');
+  const storedFavs = DataStore.getFavCities();
   favCheckboxes.forEach(cb => {
     cb.checked = storedFavs.includes(cb.value);
   });
 
   // Load and set home radio (or default)
-  const storedHome = localStorage.getItem('homeCity') || DEFAULT_CITY;
+  const storedHome = DataStore.getHomeCity();
   homeRadios.forEach(rb => rb.checked = rb.value === storedHome);
 
-  // Limit to max 3 favourites so the option makes sense
+  // Limit to max 3 favourites
   function updateFavStates() {
-    const count = favCheckboxes.filter(cb => cb.checked).length;
+    const count   = favCheckboxes.filter(cb => cb.checked).length;
     const disable = count >= 3;
     favCheckboxes.forEach(cb => {
       cb.disabled = disable && !cb.checked;
@@ -66,10 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Save preferences button
   saveBtn.addEventListener('click', () => {
     const newFavs = favCheckboxes.filter(cb => cb.checked).map(cb => cb.value);
-    localStorage.setItem('favCities', JSON.stringify(newFavs));
+    DataStore.setFavCities(newFavs);
 
-    const newHome = homeRadios.find(rb => rb.checked)?.value || DEFAULT_CITY;
-    localStorage.setItem('homeCity', newHome);
+    const newHome = homeRadios.find(rb => rb.checked)?.value || DataStore.getHomeCity();
+    DataStore.setHomeCity(newHome);
 
     // Go back to dashboard after saving
     window.location.href = '/';
@@ -78,11 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Reset button: clear all saved prefs and reload defaults
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
-      localStorage.removeItem('favCities');
-      localStorage.removeItem('homeCity');
-      setUnits('metric');
-      localStorage.removeItem('units');
-      setTheme('light');
+      DataStore.setFavCities([]);
+      DataStore.setHomeCity(DataStore.getHomeCity()); // this will reset to DEFAULT_CITY
+      DataStore.setUnits('metric');
+      DataStore.setTheme('light');
       window.location.reload(); // reflect the defaults on form
     });
   }
